@@ -42,13 +42,11 @@ eq:
 
 skip:
 		@ shift to checking the next bit
-		lsl r3, r3, #1
-		cmp r3, #0 		@ check if all bits have been added
-		bne loop 		@ loop back around if program isnt finished
+		lsls r3, r3, #1 @ left shift mask and set cpsr
+		bne loop 		@ loop if program isnt finished
 
 end:
 		@ if the program is finished
 		mov r0, r2 		@ set r0 = return value in r2
 		pop {r2,r3,r4,r5,r6,r7}		@ restore all registers
 		mov pc, lr 		@ return to caller
-		

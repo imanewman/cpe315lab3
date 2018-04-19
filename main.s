@@ -58,7 +58,7 @@ mulcmp:
     bne inval             @ branch to inval if op isnt mul
     ldr r0, [sp, #12]     @ load first input to r0 
     ldr r1, [sp, #8]      @ load second input to r1 
-    bl intsub             @ branch to intmul
+    bl intmul             @ branch to intmul
     b printres            @ branch to printres after mul
 
 inval:
