@@ -1,12 +1,15 @@
    .syntax unified
 
+   @ Template file for Lab 3
+   @ Team member names here: Tim Newman, Josh Conrad
+
     .arch armv7a
-    .fpu vfp 
+    .fpu vfp
 
     @ --------------------------------
     .global intadd
 intadd:
-		@ save registers overwritten and 
+		@ save registers overwritten and
 		@ initialize registers being used
 		push {r2,r3,r4,r5,r6,r7} 	@ save any registers overwritten
 		mov r2, #0 		@ set r2 to 0, r2 = result
@@ -21,17 +24,17 @@ loop:
 		@ set the bit of the result
 		and r6, r3, r0 	@ set r6 = nth bit of first input
 		and r7, r3, r1 	@ set r7 = nth bit of second input
-		eor r4, r7, r6 	@ set r4 = eor of the 2 bits and the carry, 
+		eor r4, r7, r6 	@ set r4 = eor of the 2 bits and the carry,
 		eor r4, r4, r5  @          representing that bit of the result
 		orr r2, r2, r4  @ effectively add single bit to result
 
 		@ set the carry bit
 		and r4, r6, r7  @ set r4 = and of nth bits
-		cmp r4, r3 		@ compare with the current bit 
+		cmp r4, r3 		@ compare with the current bit
 		beq eq 			@ if equal (is a carry) branch to eq
 		orr r4, r6, r7  @ set r4 = or of nth bits
 		and r4, r4, r5  @ set r4 = and of above with carry
-		cmp r4, r3 		@ compare with the current bit 
+		cmp r4, r3 		@ compare with the current bit
 		beq eq 			@ if equal (is a carry) branch to eq
 		@ if no carry
 		mov r5, #0 		@ set carry bit to 0

@@ -1,7 +1,10 @@
    .syntax unified
 
+   @ Template file for Lab 3
+   @ Team member names here: Tim Newman, Josh Conrad
+
     .arch armv7a
-    .fpu vfp 
+    .fpu vfp
 
     @ --------------------------------
     .global intsub
